@@ -3,9 +3,11 @@
 DESCRIPTION = "DSP source/sink blocks for GNU Radio"
 SECTION = "apps"
 PRIORITY = "optional"
-LICENSE = "GPL"
+LICENSE = "GPLv3"
 DEPENDS = " gnuradio python swig-native linux-libc-headers easycom-gpp "
 RDEPENDS = "gnuradio"
+
+LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 PN = "gr-dsp"
 PV = "0.1"
@@ -18,13 +20,13 @@ SRC_URI = "file://gr-dsp-${PV}.tar.gz"
 #SRC_URI = "file://gr-dsp/gr-howto-write-a-block-3.2.2.tar.gz"
 #S = "${WORKDIR}/${PN}-${PV}-r0"
 #S = "${WORKDIR}/test-123"
-S = "${WORKDIR}"
+S = "${WORKDIR}/${PN}-${PV}"
 
 #S = "/home/alfayez/oe/tmp_beagleboard/work/armv7a-angstrom-linux-gnueabi/gr-dsp-0.1-r0"
 inherit autotools
 
 export BUILD_SYS
-export HOST_SYS=${MULTIMACH_TARGET_SYS}
+export HOST_SYS = "${MULTIMACH_TARGET_SYS}"
 
 EXTRA_OECONF += "  --with-pythondir=/usr/lib/python2.6/site-packages \
   PYTHON_CPPFLAGS=-I${STAGING_INCDIR}/python2.6 \
