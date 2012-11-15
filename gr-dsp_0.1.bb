@@ -4,59 +4,38 @@ DESCRIPTION = "DSP source/sink blocks for GNU Radio"
 SECTION = "apps"
 PRIORITY = "optional"
 LICENSE = "GPLv3"
-DEPENDS = " gnuradio python swig-native linux-libc-headers easycom-gpp "
-RDEPENDS = "gnuradio"
+DEPENDS = "gnuradio python swig-native easycom-gpp"
+RDEPENDS = "gnuradio easycom-gpp easycom-dsp"
+
+inherit distutils-base cmake pkgconfig
+
+export BUILD_SYS
+export HOST_SYS="${MULTIMACH_TARGET_SYS}"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-PN = "gr-dsp"
 PV = "0.1"
 
-SRC_URI = "file://gr-dsp-${PV}.tar.gz"
-#   file://libloopgppAl2.so.1 
-#   file://gnuradio_beagleboard_dsp.h"
+SRC_URI = "git://git.sigp.net/gr-dsp"
 	    
-	    
-#SRC_URI = "file://gr-dsp/gr-howto-write-a-block-3.2.2.tar.gz"
-#S = "${WORKDIR}/${PN}-${PV}-r0"
-#S = "${WORKDIR}/test-123"
-S = "${WORKDIR}/${PN}-${PV}"
+S = "${WORKDIR}/git/gr-dsp"
 
-#S = "/home/alfayez/oe/tmp_beagleboard/work/armv7a-angstrom-linux-gnueabi/gr-dsp-0.1-r0"
-inherit autotools
-
-export BUILD_SYS
-export HOST_SYS = "${MULTIMACH_TARGET_SYS}"
-
-EXTRA_OECONF += "  --with-pythondir=/usr/lib/python2.6/site-packages \
-  PYTHON_CPPFLAGS=-I${STAGING_INCDIR}/python2.6 \
-  GNURADIO_CORE_INCLUDEDIR=${STAGING_INCDIR}/gnuradio \
-"
-
-
-do_configure_append() {
-
-	find ${S} -name Makefile | xargs sed -i s:'-I/usr/include':'-I${STAGING_INCDIR}':g
-	find ${S} -name Makefile | xargs sed -i s:'GNURADIO_CORE_INCLUDEDIR = /usr/include/gnuradio':'GNURADIO_CORE_INCLUDEDIR = ${STAGING_INCDIR}/gnuradio':g
-	find ${S} -name Makefile | xargs sed -i s:'grincludedir = $(includedir)/gnuradio':'grincludedir = ${STAGING_INCDIR}/gnuradio':g
-}
-
-#do_compile_prepend () {
-#	cp ${S}/gpp_lib/* ${S}/src/lib/
-#}
+FILES_${PN}-grc = "${datadir}/gnuradio/grc"
 
 FILES_${PN} += "\
-   /usr/lib/python2.6/site-packages/gnuradio/dsp.pyc 	\
-   /usr/lib/python2.6/site-packages/gnuradio/dsp.pyo 	\
-   /usr/lib/python2.6/site-packages/gnuradio/dsp.py 	\
-   /usr/lib/python2.6/site-packages/gnuradio/_dsp.la	\
-   /usr/lib/python2.6/site-packages/gnuradio/_dsp.so 	\
-"
-FILES_${PN}-dev += "\
-   /usr/include/gnuradio/dsp_* 	\
-   /usr/include/gnuradio/swig/dsp_ \
+    ${PYTHON_SITEPACKAGES_DIR}/gnuradio/* \
+    ${datadir}/gnuradio/* \
 "
 
-PROVIDES += "gr-dsp"
-#PACKAGES += "gr-dsp"
+FILES_${PN}-dbg += "${PYTHON_SITEPACKAGES_DIR}/gnuradio/.debug \
+                    ${PYTHON_SITEPACKAGES_DIR}/gnuradio/*/.debug \
+		   "
+#FILES_${PN}-examples = "${datadir}/gnuradio/examples"
 
+FILESPATHPKG_prepend = "${PN}-git:"
+
+OECMAKE_BUILDPATH = "${S}/build"
+OECMAKE_SOURCEPATH = "${S}"
+
+EXTRA_OECMAKE = ""
+EXTRA_OEMAKE = "-C ${OECMAKE_BUILDPATH}"
