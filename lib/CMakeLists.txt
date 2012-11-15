@@ -34,8 +34,8 @@ add_library(gnuradio-dsp SHARED
 target_link_libraries(gnuradio-dsp ${Boost_LIBRARIES} ${GRUEL_LIBRARIES} ${GNURADIO_CORE_LIBRARIES}
     loopgppAl2)
 set_target_properties(gnuradio-dsp PROPERTIES DEFINE_SYMBOL "gnuradio_dsp_EXPORTS")
-set_target_properties(gnuradio-dubri PROPERTIES SOVERSION 0)
-set_target_properties(gnuradio-dubri PROPERTIES VERSION 0.1)
+set_target_properties(gnuradio-dsp PROPERTIES SOVERSION 0)
+set_target_properties(gnuradio-dsp PROPERTIES VERSION 0.1)
 
 ########################################################################
 # Install built library files
