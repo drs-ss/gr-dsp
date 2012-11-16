@@ -22,10 +22,11 @@
 #ifndef INCLUDED_DSP_INIT_H
 #define INCLUDED_DSP_INIT_H
 
+#include <dsp_api.h>
 #include <gr_sync_block.h>
 #include <gnuradio_beagleboard_dsp.h>
 #include <vector>
 
-int dsp_init();
+DSP_API int dsp_init();
 
 #endif /* INCLUDED_DSP_INIT_H */

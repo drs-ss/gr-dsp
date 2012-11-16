@@ -23,5 +23,6 @@ GR_PYTHON_INSTALL(
     PROGRAMS
     audio_stream.py
     filter_test_vector_src.py
-    DESTINATION bin
+    DESTINATION ${GR_RUNTIME_DIR}
+    COMPONENT "gr-dsp"
 )

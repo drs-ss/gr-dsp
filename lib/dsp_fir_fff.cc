@@ -119,7 +119,7 @@ dsp_fir_fff::dsp_fir_fff (const std::vector<float> &taps,
 	if (dsp_init_flag == 1)
 	{
 		printf("HEY INIT DSP FFF\n");	
-		dsp_init_function("loopAl2.out");
+		dsp_init_function("/usr/share/easycom-dsp/loopAl2.out");
 	}
 	else
 		printf("HEY DON'T INIT DSP FFF\n");

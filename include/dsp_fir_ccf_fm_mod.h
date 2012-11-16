@@ -22,6 +22,7 @@
 #ifndef INCLUDED_DSP_FIR_CCF_FM_MOD_H
 #define INCLUDED_DSP_FIR_CCF_FM_MOD_H
 
+#include <dsp_api.h>
 #include <gr_sync_interpolator.h>
 //#include <gr_sync_decimator.h>
 #include <gnuradio_beagleboard_dsp.h>
@@ -52,7 +53,7 @@ typedef boost::shared_ptr<dsp_fir_ccf_fm_mod> dsp_fir_ccf_fm_mod_sptr;
  * constructor is private.  howto_make_square2_ff is the public
  * interface for creating new instances.
  */
-dsp_fir_ccf_fm_mod_sptr dsp_make_fir_ccf_fm_mod (const std::vector<float> &taps, short scale_data, short decimation, bufferType input_sig, bufferType output_sig, bufferType dsp_init_flag, bufferType fir_id);
+DSP_API dsp_fir_ccf_fm_mod_sptr dsp_make_fir_ccf_fm_mod (const std::vector<float> &taps, short scale_data, short decimation, bufferType input_sig, bufferType output_sig, bufferType dsp_init_flag, bufferType fir_id);
 
 /*!
  * \brief square2 a stream of floats.
@@ -60,7 +61,7 @@ dsp_fir_ccf_fm_mod_sptr dsp_make_fir_ccf_fm_mod (const std::vector<float> &taps,
  *
  * This uses the preferred technique: subclassing gr_sync_block.
  */
-class dsp_fir_ccf_fm_mod : public gr_sync_interpolator
+class DSP_API dsp_fir_ccf_fm_mod : public gr_sync_interpolator
 {
 private:
   // The friend declaration allows howto_make_square2_ff to

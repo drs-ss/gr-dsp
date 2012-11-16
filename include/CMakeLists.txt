@@ -21,7 +21,8 @@
 # Install public header files
 ########################################################################
 install(FILES
-    dsp_fir_fff.h
+    dsp_api.h
+    #dsp_fir_fff.h
     dsp_fir_ccf.h
     dsp_fir_ccf_fm_demod.h
     dsp_fir_ccf_fm_demod_deemph.h
@@ -30,6 +31,5 @@ install(FILES
     #dsp_fm_mod.h
     dsp_init.h
     dsp_clean.h
-    #dsp_api.h
     DESTINATION include/gnuradio
 )

@@ -84,13 +84,18 @@ set(GRC_BLOCKS_DIR      ${GR_PKG_DATA_DIR}/grc/blocks)
 ########################################################################
 find_package(Gruel)
 find_package(GnuradioCore)
+find_package(easyCom-gpp)
 
 if(NOT GRUEL_FOUND)
-    message(FATAL_ERROR "Gruel required to compile dsp")
+    message(FATAL_ERROR "Gruel required to compile gr-dsp")
 endif()
 
 if(NOT GNURADIO_CORE_FOUND)
-    message(FATAL_ERROR "GnuRadio Core required to compile dsp")
+    message(FATAL_ERROR "GnuRadio Core required to compile gr-dsp")
+endif()
+
+if(NOT EASYCOM_GPP_FOUND)
+    message(FATAL_ERROR "easyCom-gpp required to compile gr-dsp")
 endif()
 
 ########################################################################

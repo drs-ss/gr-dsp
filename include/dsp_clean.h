@@ -22,6 +22,7 @@
 #ifndef INCLUDED_DSP_CLEAN_H
 #define INCLUDED_DSP_CLEAN_H
 
+#include <dsp_api.h>
 #include <gr_sync_block.h>
 
 // Header file for GPP Side Library contains defintions for GPP/DSP related function calls
@@ -30,6 +31,6 @@
 //typedef short bufferType;
 
 
-int dsp_clean();
+DSP_API int dsp_clean();
 
 #endif /* INCLUDED_DSP_CLEAN_H */

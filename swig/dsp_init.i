@@ -43,7 +43,7 @@ Notes:
 	executed.
 	
 	the name of the DSP executable to be loaded is hardcoded in the
-	C++ implementation of the block "loopAl2.out".  While it's hardcoded
+	C++ implementation of the block "/usr/share/easycom-dsp/loopAl2.out".  While it's hardcoded
 	the function can be easily modified to pass the DSP executable 
 	as a parameter
 ***********************************************************************	

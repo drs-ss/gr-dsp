@@ -21,7 +21,7 @@
 include(GrPlatform) #define LIB_SUFFIX
 
 add_library(gnuradio-dsp SHARED
-    dsp_fir_fff.cc
+    #dsp_fir_fff.cc
     dsp_fir_ccf.cc
     dsp_fir_ccf_fm_demod.cc
     dsp_fir_ccf_fm_demod_decim.cc
@@ -31,8 +31,13 @@ add_library(gnuradio-dsp SHARED
     dsp_init.cc
     dsp_clean.cc
 )
-target_link_libraries(gnuradio-dsp ${Boost_LIBRARIES} ${GRUEL_LIBRARIES} ${GNURADIO_CORE_LIBRARIES}
-    loopgppAl2)
+target_link_libraries(gnuradio-dsp
+    ${Boost_LIBRARIES}
+    ${GRUEL_LIBRARIES}
+    ${GNURADIO_CORE_LIBRARIES}
+    ${EASYCOM_GPP_LIBRARIES}
+)
+
 set_target_properties(gnuradio-dsp PROPERTIES DEFINE_SYMBOL "gnuradio_dsp_EXPORTS")
 set_target_properties(gnuradio-dsp PROPERTIES SOVERSION 0)
 set_target_properties(gnuradio-dsp PROPERTIES VERSION 0.1)

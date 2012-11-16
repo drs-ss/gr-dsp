@@ -232,7 +232,7 @@ dsp_fir_ccf_fm_demod_decim::dsp_fir_ccf_fm_demod_decim (const std::vector<float>
 	if (dsp_init_flag == 1)
 	{
 		printf("HEY INIT DSP CCF\n");	
-		dsp_init_function("loopAl2.out");
+		dsp_init_function("/usr/share/easycom-dsp/loopAl2.out");
 		buff_size = coeff_size + COEFF_INDEX + 1;
 		transmit_data_dsp(d_temp_buff_source, buff_size, d_interpolation, d_decimation, d_fir_id);
        		receive_data_dsp(d_temp_buff_dest, coeff_size, d_fir_id);
