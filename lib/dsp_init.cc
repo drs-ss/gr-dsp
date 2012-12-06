@@ -61,7 +61,7 @@ Notes:
 	executed.
 	
 	the name of the DSP executable to be loaded is hardcoded in the
-	C++ implementation of the block "/usr/share/easycom-dsp/loopAl2.out".  While it's hardcoded
+	C++ implementation of the block "loopAl2.out".  While it's hardcoded
 	the function can be easily modified to pass the DSP executable 
 	as a parameter
 ***********************************************************************	
@@ -84,16 +84,16 @@ dsp_init()
   	/*
 	***********************************************************************	
 	The dsp_init_function is called from the GPP/DSP Library the 
-	"/usr/share/easycom-dsp/loopAl2.out" corresponds to the name of the DSP executable to be loaded
+	"loopAl2.out" corresponds to the name of the DSP executable to be loaded
 	
 	the name of the DSP executable to be loaded is hardcoded in the
-	C++ implementation of the block "/usr/share/easycom-dsp/loopAl2.out".  While it's hardcoded
+	C++ implementation of the block "loopAl2.out".  While it's hardcoded
 	the function can be easily modified to pass the DSP executable 
 	as a parameter
 	***********************************************************************	
 	*/  
 
-  dsp_init_function("/usr/share/easycom-dsp/loopAl2.out");
+  dsp_init_function("loopAl2.out");
   
   return 1;
 }
